@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('histoires', function (Blueprint $table) {
             $table->id();
             $table->string('titre');
-            $table->string('audio');
+            $table->string('intro');
             $table->string('image');
-            $table->string('auteur');
-            $table->string('editeur');
+            $table->string('audio');
             $table->integer('nb_vue');
             $table->float('note');
             $table->integer('nb_notes');
