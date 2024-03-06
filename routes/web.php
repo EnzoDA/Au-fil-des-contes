@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    return view('');
 });
 
 Route::get('template', function () {
