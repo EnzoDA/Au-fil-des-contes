@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CaverneController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\Caverne;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Redirect;
 /*
@@ -16,13 +18,8 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('template', function () {
     return view('template');
 });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -39,7 +36,7 @@ Route::resource('tags', TagController::class);
 
 Route::resources([
     'user' => UserController::class,
-
+    'caverne' => CaverneController::class,
 
 
 ]);
