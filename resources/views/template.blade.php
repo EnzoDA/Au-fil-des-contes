@@ -44,7 +44,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('caverne.index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Cavernes</span></a>
             </li>
@@ -167,17 +167,21 @@
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
+                <div class="container-fluid">
+                    @if(session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+                    @if(session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                    @yield('content')
 
-                <!-- Begin Page Content -->
-
-
-
-
-
-
-
-        <!-- End of Content Wrapper -->
+                </div>
+                <!-- /.
 
     </div>
     <!-- End of Page Wrapper -->

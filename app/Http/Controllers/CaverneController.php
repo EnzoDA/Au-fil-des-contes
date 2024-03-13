@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Caverne;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class CaverneController extends Controller
@@ -25,7 +26,11 @@ class CaverneController extends Controller
      */
     public function create()
     {
-        //
+        try{
+            return view('caverne.creer-caverne');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Une erreur s\'est produite.');
+        }
     }
 
     /**
@@ -33,7 +38,25 @@ class CaverneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            //Validation des données entrée
+        $validator = Validator::make($request->all(), [
+            'titre' => 'required|min:2',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $newCaverne = new Caverne();
+        $newCaverne->titre = $request->input('titre');
+        $newCaverne->image = $request->input('image');
+        $newCaverne->audio = $request->input('audio');
+        $newCaverne->save();
+        return redirect()->route('caverne.index')->with('succes', 'Caverne créée avec succès!');
+
+        } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Une erreur s\'est produite.');
+    }
     }
 
     /**
@@ -49,7 +72,14 @@ class CaverneController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        try{
+            $caverne = Caverne::find($id);
+        return view('caverne.modifier-caverne', compact('caverne'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Une erreur s\'est produite.');
+        }
+
+        
     }
 
     /**
@@ -57,7 +87,25 @@ class CaverneController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            //Validation des données entrée
+        $validator = Validator::make($request->all(), [
+            'titre' => 'required|min:2',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+            // Mettre à jour la caverne actuelle
+            $edit_caverne = caverne::find($id);
+            $edit_caverne->titre = $request->input('titre');
+            $edit_caverne->graphique = $request->input('image');
+            $edit_caverne->audio = $request->input('audio');
+            $edit_caverne->save();
+
+            return redirect()->route('caverne.index')->with('success', 'Caverne modifiée avec succès!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Une erreur s\'est produite.');
+        }
     }
 
     /**
