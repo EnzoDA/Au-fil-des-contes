@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Redirect;
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,11 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
+Route::resource('tags', TagController::class);
 
 Route::resources([
     'user' => UserController::class,
+
+
 
 ]);
