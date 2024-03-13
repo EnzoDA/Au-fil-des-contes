@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\Caverne;
+use App\Http\Controllers\HistoireController;
+use App\Http\Controllers\CommentaireController;
 use Illuminate\Support\Facades\Redirect;
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +19,11 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 Route::get('/', function () {
-    return view('template');
+    return view('');
 });
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -36,4 +41,7 @@ require __DIR__.'/auth.php';
 Route::resources([
     'user' => UserController::class,
     'caverne' => CaverneController::class,
+     'histoire' => HistoireController::class,
+    'commentaire' => CommentaireController::class,
+
 ]);
