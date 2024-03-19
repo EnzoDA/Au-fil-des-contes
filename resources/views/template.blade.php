@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.css">
@@ -55,7 +55,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('histoire.index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Histoires</span></a>
             </li>
@@ -77,7 +77,6 @@
 
         </ul>
         <!-- End of Sidebar -->
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
