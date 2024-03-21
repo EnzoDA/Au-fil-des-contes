@@ -13,8 +13,8 @@ class HistoireController extends Controller
     public function index()
     {
         try{
-            $histoires= Histoire::all();
 
+            $histoires = Histoire::all();
             return view('Histoire.histoire',compact('histoires'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite.');
@@ -45,7 +45,7 @@ class HistoireController extends Controller
         //$histoire->image = $request->image;
         //$histoire->audio = $request->audio;
         $histoire->save();
-        return redircet()->route('histoire.index')->with('sucess', "l'histoire a été crée");
+        return redirect()->route('histoire.index')->with('sucess', "l'histoire a été crée");
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite.');
         }

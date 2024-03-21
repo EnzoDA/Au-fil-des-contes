@@ -22,3 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/contes', [APIController::class, 'contes']);
 Route::get('/cavernes', [APIController::class, 'cavernes']);
 Route::post('/contes/{id}/eval', [APIController::class, 'evaluerConte']);
+Route::get('/app-conf', [APIController::class, 'getAppconfig']);
+Route::get('/deploy-release', [APIController::class, 'updateAppVersion' ]);
+Route::get('/eord-release', [APIController::class, ''])
