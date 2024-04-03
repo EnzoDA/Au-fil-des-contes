@@ -42,7 +42,12 @@ class CaverneController extends Controller
             //Validation des données entrée
         $validator = Validator::make($request->all(), [
             'titre' => 'required|min:2',
-        ]);
+            'image' => 'required|image',
+            'audio' => 'required|mimes:mp3,wav',
+    ]);
+
+    $imagePath = $request->file('image')->store('images', 's3');
+    $audioPath = $request->file('audio')->store('audios', 's3');
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }

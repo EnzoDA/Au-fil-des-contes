@@ -17,20 +17,28 @@
         </div>
 
         <div class="form-group">
-            <label for="image">Image</label>
-            <input type="text" id="image" name="image" value="{{ old('image') }}" class="form-control"/>
-            @error('image')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
+    <label for="image">Image</label>
+    <div class="custom-file">
+        <input type="file" id="image" name="image" class="custom-file-input">
+        <label class="custom-file-label" for="image">Choisir l'image</label>
+    </div>
+    @error('image')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
 
-        <div class="form-group">
-            <label for="audio">Audio</label>
-            <input type="text" id="audio" name="audio" value="{{ old('audio') }}" class="form-control"/>
-            @error('audio')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
+<div class="form-group">
+    <label for="audio">Audio</label>
+    <div class="custom-file">
+        <input type="file" id="audio" name="audio" class="custom-file-input">
+        <label class="custom-file-label" for="audio">Choisir l'audio</label>
+    </div>
+    @error('audio')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
+
+
 
         <button type="submit" class="btn btn-success">Ajouter cette Caverne</button>
     </form>
