@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Caverne;
+use App\Models\Histoire;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -69,7 +70,8 @@ class CaverneController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+        
     }
 
     /**
@@ -81,10 +83,10 @@ class CaverneController extends Controller
             $caverne = Caverne::find($id);
         return view('caverne.modifier-caverne', compact('caverne'));
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Une erreur s\'est produite.');
+
         }
 
-        
+
     }
 
     /**

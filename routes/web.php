@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\Caverne;
+use App\Models\Histoire;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\HistoireController;
 use App\Http\Controllers\CommentaireController;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 Route::get('/', function () {
-    return view('');
+    return redirect()->route('caverne.index');
 });
 
 
@@ -37,14 +38,16 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+
 Route::resource('tags', TagController::class);
 
 Route::resources([
     'user' => UserController::class,
     'caverne' => CaverneController::class,
-
-
-     'histoire' => HistoireController::class,
+    'histoire' => HistoireController::class,
     'commentaire' => CommentaireController::class,
 
 ]);
+
+
+Route::get('histoirecaverne/{id}', [HistoireController::class, 'hist_cav'])->name('histoirecaverne');

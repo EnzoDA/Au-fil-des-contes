@@ -1,5 +1,5 @@
 @extends('template')
-@section('containt')
+@section('content')
 <title>Modification d histoires</title>
 <h1>Formulaire</h1>
 @if(Session::has('erreur'))

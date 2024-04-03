@@ -24,9 +24,10 @@
         <div class="col-lg-6">
             <h2>Au file des contes</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dui vel velit rutrum consectetur.
-                Integer sit amet accumsan libero. Sed at turpis non libero cursus fringilla. Phasellus vel mi nec ligula
-                fermentum ultricies et nec purus.
+                Bienvenue dans un univers magique où chaque jour est une nouvelle aventure,où
+                 l imagination prend son envol ! Avec "Au Fil des Contes", préparez-vous à vivre
+                 des moments de pur bonheur
+                 et à explorer un monde rempli de surprises et de fantaisie !
             </p>
             <a href="#" class="btn btn-primary">Télécharger l Application</a>
         </div>

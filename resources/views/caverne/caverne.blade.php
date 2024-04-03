@@ -10,9 +10,11 @@
     <table class="table table-bordered table-hover table-sm">
         <thead>
             <tr>
+                <th>Image</th>
                 <th>Titre</th>
                 <th>Intro</th>
-                <th>Image</th>
+                <th>histoire</th>
+                <th>Voir Contes</th>
                 <th>Modifier</th>
                 <th>Supprimer</th>
             </tr>
@@ -20,9 +22,12 @@
         <tbody>
             @foreach($cavernes as $caverne)
             <tr>
+                <td>{{ $caverne['image'] }} </td>
                 <td>{{ $caverne['titre'] }} </td>
                 <td>{{ $caverne['audio'] }} </td>
-                <td>{{ $caverne['image'] }} </td>
+
+                <td>{{ $caverne->histoires->count() }}</td>
+                <td><a href={{ route('histoirecaverne', $caverne->id) }} class="btn btn-primary">Voir les contes</a></td>
                 <td>
                 <form action="{{ route('caverne.edit', [$caverne["id"]])}}" method="get">
                         @csrf
@@ -35,7 +40,7 @@
                         <button type="submit" class="btn btn-danger">Supprimer</button>
                 </form>
                 </td>
-            </tr>   
+            </tr>
             @endforeach
         </tbody>
     </table>

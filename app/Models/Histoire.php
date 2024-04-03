@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Tag;
 use App\Models\caverne;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\belongsTo;
 
 class Histoire extends Model
 {
@@ -17,9 +17,9 @@ class Histoire extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function cavernes(): BelongsToMany
+    public function caverne(): belongsTo
     {
-        return $this->belongsToMany(Caverne::class);
+        return $this->belongsTo(Caverne::class);
     }
 
 }

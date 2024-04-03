@@ -12,8 +12,13 @@ class CommentaireController extends Controller
      */
     public function index()
     {
-        $commentaires = Commentaire::all();
-        return view('Commentaires.livre_d_or', compact('commentaires'));
+        try{
+            $commentaires = Commentaire::all();
+            return view('Commentaires.livre_d_or', compact('commentaires'));
+        
+        } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Une erreur s\'est produite.');
+        }
     }
 
     /**
@@ -61,6 +66,8 @@ class CommentaireController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $commentaire = Commentaire::find($id);
+        $commentaire->delete();
+        return redirect()->route('commentaire.index')->with('sucess','Le commentaire a été supprimer');
     }
 }
