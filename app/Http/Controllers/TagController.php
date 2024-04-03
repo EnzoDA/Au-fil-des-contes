@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tag;
+use App\Models\Histoire;
 
 class TagController extends Controller
 {
@@ -17,11 +18,21 @@ class TagController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $tag = Tag::find($id);
+        return view('tag.tag_show', compact('tag'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('tag.tag_add');
+        $histoires = Histoire::all();
+        return view('tag.tag_add', compact('histoires'));
     }
 
     /**
@@ -34,6 +45,12 @@ class TagController extends Controller
         $newTag->tag_nom = $request->get('tag_nom');
         $newTag->save();
 
+        // Récupérer les ID des histoires cochées
+        $histoireIds = $request->input('histoire_id', []);
+
+        // Associer les histoires au tag
+        $newTag->histoires()->attach($histoireIds);
+
         return redirect()->route('tags.index');
     }
 
@@ -43,7 +60,8 @@ class TagController extends Controller
     public function edit(int $id)
     {
         $tag = Tag::find($id);
-        return view('tag.tag_edit', compact('tag'));
+        $histoires = Histoire::all();
+        return view('tag.tag_edit', compact('tag', 'histoires'));
     }
 
     /**
@@ -55,6 +73,15 @@ class TagController extends Controller
 
         $editTag->tag_nom = $request->get('tag_nom');
         $editTag->save();
+        
+        // Récupérer les ID des histoires cochées et décochées
+        $checkedStoryIds = $request->input('histoire_id', []);
+        $uncheckedStoryIds = $request->get('histoire_id_to_remove', []);
+        // Détacher les histoires décochées du tag
+        $editTag->histoires()->detach($uncheckedStoryIds);
+
+        // Attacher les histoires cochées au tag
+        $editTag->histoires()->attach($checkedStoryIds);
 
         return redirect()->route('tags.index');
     }
