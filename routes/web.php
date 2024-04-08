@@ -51,3 +51,4 @@ Route::resources([
 
 
 Route::get('histoirecaverne/{id}', [HistoireController::class, 'hist_cav'])->name('histoirecaverne');
+Route::get('livre_d_or', [CommentaireController::class, 'livredor'])->name('livre_d_or');
