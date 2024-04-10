@@ -10,6 +10,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\HistoireController;
 use App\Http\Controllers\CommentaireController;
 use Illuminate\Support\Facades\Redirect;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +50,7 @@ Route::resources([
 
 ]);
 
-
+Route::post('store_histoire/{id}', [HistoireController::class, 'store_hist'])->name('store_histoire');
 Route::get('histoirecaverne/{id}', [HistoireController::class, 'hist_cav'])->name('histoirecaverne');
 Route::get('livre_d_or', [CommentaireController::class, 'livredor'])->name('livre_d_or');
+Route::get('createhistoire/{id}', [HistoireController::class, 'create_histoire'])->name('createhistoire');

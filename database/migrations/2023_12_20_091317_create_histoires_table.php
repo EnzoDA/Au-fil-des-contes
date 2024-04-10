@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('intro');
             $table->string('image');
             $table->string('audio');
-            $table->integer('nb_vue');
-            $table->float('note');
-            $table->integer('nb_notes');
+            $table->integer('nb_vue')->nullable();
+            $table->float('note')->nullable();
+            $table->integer('nb_notes')->nullable();
             $table->foreignId('caverne_id')->nullable()->constrained();
             $table->timestamps();
         });

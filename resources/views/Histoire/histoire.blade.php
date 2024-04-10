@@ -3,7 +3,7 @@
 <title>Histoires</title>
 
 
-<button type="button" class="btn btn-outline-success"><a class="text-decoration-none text-dark" href="{{ route('histoire.create') }}">Création d une Histoire</a></button>
+
 <table class="table table-striped">
     <thead>
       <tr>
@@ -21,9 +21,25 @@
       <tr>
 
         <td>{{ $histoire->titre }}</td>
-        <td>{{ $histoire->intro }}</td>
-        <td>{{ $histoire->image }}</td>
-        <td>{{ $histoire->audio }}</td>
+        <td>@if ($histoire->intro == null)
+            <button onclick="toggleAudio('{{ asset("storage/audios/intro/" . $histoire->intro) }}')">
+                <i class="fas fa-play"></i>
+            </button>
+        @else
+            <p>aucune intro</p>
+        @endif </td>
+        <td>@if ($histoire->image == null)
+            <img src="{{ asset("images/thumbnail/". $histoire->image )}}" alt="Image">
+        @else
+            <p>aucune image</p>
+        @endif </td>
+        <td>@if ($histoire->audio == null)
+            <button onclick="toggleAudio('{{ asset("storage/audios/" . $histoire->audio) }}')">
+                <i class="fas fa-play"></i>
+            </button>
+        @else
+            <p>aucun audio</p>
+        @endif </td>
         <td>{{ $histoire->note }}</td>
         <td><a class="btn btn-warning" href={{ route('histoire.edit', $histoire->id )}}>Modifier</a></td>
         <td><form action={{ route('histoire.destroy', $histoire->id) }} method="POST" >
@@ -40,5 +56,33 @@
   </table>
 
 
+  <script>
+    var currentAudio = null;
+    var currentAudioPath = null;
+    var audioPaused = false;
+    var audioPosition = 0;
+
+    function toggleAudio(audioPath) {
+        if (currentAudio !== null && currentAudioPath === audioPath) {
+            if (audioPaused) {
+                currentAudio.play();
+                audioPaused = false;
+            } else {
+                currentAudio.pause();
+                audioPaused = true;
+                audioPosition = currentAudio.currentTime;
+            }
+        } else {
+            if (currentAudio !== null) {
+                currentAudio.pause();
+            }
+            currentAudio = new Audio(audioPath);
+            currentAudioPath = audioPath;
+            currentAudio.currentTime = audioPosition;
+            currentAudio.play();
+            audioPaused = false;
+        }
+    }
+</script>
 
 @stop
