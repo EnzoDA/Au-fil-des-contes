@@ -2,25 +2,25 @@
 
 @section('content')
 
-<p>Information sur le mot clé : ...</p>
+<p>Information sur le mot-clé : {{$tag->tag_nom}}</p>
 
-    <p>Nom du tag :
-        <input type="text" required name="tag_nom" id="tag_nom" placeholder="Nom du tag">
-    </p>
+<p>Nom du tag :
+    <input type="text" required name="tag_nom" id="tag_nom" placeholder="Nom du tag" value="{{ $tag->tag_nom }}">
+</p>
 
-    <div class="table-responsive">
+<div class="table-responsive">
     <table class="table table-bordered table-hover table-sm">
-        <thead>    
+        <thead>
             <th>
                 <p>Titre de l'histoire</p>
             </th>
         </thead>
-        @foreach ($histoires as $histoire)
+        @foreach ($tags as $tag)
         <tr>
-            <td>{{ $histoire->titre }}</td>
+            <td>{{ $tag->titre }}</td>
         </tr>
         @endforeach
     </table>
-    </div>
+</div>
 
 @stop
