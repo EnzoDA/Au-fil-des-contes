@@ -13,8 +13,8 @@
                 <th>Image</th>
                 <th>Titre</th>
                 <th>Intro</th>
-                <th>histoire</th>
-                <th>Voir Contes</th>
+                <th>Histoires</th>
+                <th>Voir les Histoires</th>
                 <th>Modifier</th>
                 <th>Supprimer</th>
             </tr>
@@ -27,7 +27,7 @@
                 <td>{{ $caverne['audio'] }} </td>
 
                 <td>{{ $caverne->histoires->count() }}</td>
-                <td><a href={{ route('histoirecaverne', $caverne->id) }} class="btn btn-primary">Voir les contes</a></td>
+                <td><a href={{ route('histoirecaverne', $caverne->id) }} class="btn btn-primary">Voir les Histoire</a></td>
                 <td>
                 <form action="{{ route('caverne.edit', [$caverne["id"]])}}" method="get">
                         @csrf

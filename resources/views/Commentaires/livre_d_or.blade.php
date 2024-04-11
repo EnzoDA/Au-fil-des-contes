@@ -42,50 +42,19 @@
     <div class="container">
         <h2 class="text-center mb-4">Livre d&#039or</h2>
         <div class="row">
+
+            @foreach ( $commentaires as $commentaire )
+
+
             <div class="col-md-6">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5>Pseudo</h5>
-                        <p class="card-text">"Superbe application! J'adore l'utiliser au quotidien."</p>
+                        <p class="card-text"> {{ $commentaire->commentaire }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5>Pseudo</h5>
-                        <p class="card-text">"L'interface est intuitive et les fonctionnalités sont incroyables."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <p class="card-text">"L'interface est intuitive et les fonctionnalités sont incroyables."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <p class="card-text">"L'interface est intuitive et les fonctionnalités sont incroyables."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <p class="card-text">"L'interface est intuitive et les fonctionnalités sont incroyables."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <p class="card-text">"L'interface est intuitive et les fonctionnalités sont incroyables."</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
 
             <!-- Ajoutez plus de cartes selon le besoin -->
         </div>
