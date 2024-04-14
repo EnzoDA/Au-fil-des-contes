@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<title>AU FIL DES CONTES</title>
 <head>
 
     <meta charset="utf-8">
@@ -54,12 +54,6 @@
 
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('histoire.index') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Histoires</span></a>
-            </li>
-            <hr class="sidebar-divider">
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('tags.index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
