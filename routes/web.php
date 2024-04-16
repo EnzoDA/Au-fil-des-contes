@@ -45,12 +45,25 @@ Route::resource('tags', TagController::class);
 Route::resources([
     'user' => UserController::class,
     'caverne' => CaverneController::class,
-    'histoire' => HistoireController::class,
     'commentaire' => CommentaireController::class,
 
 ]);
 
-Route::post('store_histoire/{id}', [HistoireController::class, 'store_hist'])->name('store_histoire');
-Route::get('histoirecaverne/{id}', [HistoireController::class, 'hist_cav'])->name('histoirecaverne');
+/*---------------------------------HISTOIRE CONTROLLER---------------------------------*/
+Route::get('histoire/{histoire}', [HistoireController::class, 'index'])->name('histoire.index');
+
+Route::get('histoire/create/{id}', [HistoireController::class, 'create'])->name('histoire.create');
+Route::post('histoire/{id}', [HistoireController::class, 'store'])->name('histoire.store');
+
+Route::get('histoire/{histoire}/edit', [HistoireController::class, 'edit'])->name('histoire.edit');
+Route::put('histoire/{id}', [HistoireController::class, 'update'])->name('histoire.update');
+
+Route::delete('histoire/{histoire}', [HistoireController::class, 'destroy'])->name('histoire.destroy');
+
+Route::get('histoire/{histoire}/tag', [HistoireController::class, 'tag_show'])->name('histoire.tag.show');
+Route::post('histoire/tag/{histoire}', [HistoireController::class, 'tag_update'])->name('histoire.tag.update');
+
+
+
+
 Route::get('livre_d_or', [CommentaireController::class, 'livredor'])->name('livre_d_or');
-Route::get('createhistoire/{id}', [HistoireController::class, 'create_histoire'])->name('createhistoire');

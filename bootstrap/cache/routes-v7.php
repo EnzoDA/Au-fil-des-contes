@@ -162,7 +162,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::xJdqjNCAROzFAi9Z',
+            '_route' => 'generated::eOK9C5gPanZJZzPu',
           ),
           1 => NULL,
           2 => 
@@ -182,7 +182,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::y3LpPmfDtVYsm0EA',
+            '_route' => 'generated::vmXsoW1lbRm5mNGO',
           ),
           1 => NULL,
           2 => 
@@ -202,7 +202,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Onx6FM0Ac8K5n5vh',
+            '_route' => 'generated::h8dX3oFxwGMxtACl',
           ),
           1 => NULL,
           2 => 
@@ -222,7 +222,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ah9hywAbKzBEcWRQ',
+            '_route' => 'generated::WDUed6QPf2QNJYTn',
           ),
           1 => NULL,
           2 => 
@@ -242,7 +242,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::weBGfgaxCvIrglF9',
+            '_route' => 'generated::ykybNQQyfp4Akebf',
           ),
           1 => NULL,
           2 => 
@@ -262,7 +262,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::pd7Q6TNHh4UYIHsm',
+            '_route' => 'generated::yD3DhIImVr7VWUJZ',
           ),
           1 => NULL,
           2 => 
@@ -282,7 +282,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::rJcYgZyrmTfix8s8',
+            '_route' => 'generated::eOVgucwjfbW56bKf',
           ),
           1 => NULL,
           2 => 
@@ -391,7 +391,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::vMkz9NxBgLBUejhw',
+            '_route' => 'generated::Fl8Hz47iZJH5HQWc',
           ),
           1 => NULL,
           2 => 
@@ -427,7 +427,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::pXWOM8fNh2Epm93J',
+            '_route' => 'generated::n97xQrHHNwLeMr0S',
           ),
           1 => NULL,
           2 => 
@@ -557,7 +557,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::VSbadjrUOG6bW08w',
+            '_route' => 'generated::lyuhuTSZAFb2Yq8D',
           ),
           1 => NULL,
           2 => 
@@ -776,62 +776,6 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/histoire' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'histoire.index',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'histoire.store',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/histoire/create' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'histoire.create',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
       '/commentaire' => 
       array (
         0 => 
@@ -888,10 +832,30 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/livre_d_or' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'livre_d_or',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
     ),
     2 => 
     array (
-      0 => '{^(?|/_debugbar/c(?|lockwork/([^/]++)(*:39)|ache/([^/]++)(?:/([^/]++))?(*:73))|/api/contes/([^/]++)/eval(*:106)|/reset\\-password/([^/]++)(*:139)|/verify\\-email/([^/]++)/([^/]++)(*:179)|/tags/([^/]++)(?|(*:204)|/edit(*:217)|(*:225))|/user/([^/]++)(?|(*:251)|/edit(*:264)|(*:272))|/c(?|averne/([^/]++)(?|(*:304)|/edit(*:317)|(*:325))|ommentaire/([^/]++)(?|(*:356)|/edit(*:369)|(*:377)))|/histoire/([^/]++)(?|(*:408)|/edit(*:421)|(*:429)))/?$}sDu',
+      0 => '{^(?|/_debugbar/c(?|lockwork/([^/]++)(*:39)|ache/([^/]++)(?:/([^/]++))?(*:73))|/api/contes/([^/]++)/eval(*:106)|/reset\\-password/([^/]++)(*:139)|/verify\\-email/([^/]++)/([^/]++)(*:179)|/tags/([^/]++)(?|(*:204)|/edit(*:217)|(*:225))|/user/([^/]++)(?|(*:251)|/edit(*:264)|(*:272))|/c(?|averne/([^/]++)(?|(*:304)|/edit(*:317)|(*:325))|ommentaire/([^/]++)(?|(*:356)|/edit(*:369)|(*:377)))|/histoire/(?|([^/]++)(*:408)|create/([^/]++)(*:431)|([^/]++)(?|(*:450)|/(?|edit(*:466)|tag(*:477))|(*:486)|(*:494))|tag/([^/]++)(*:515)))/?$}sDu',
     ),
     3 => 
     array (
@@ -948,7 +912,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::pg97NA5RlMiq4K6M',
+            '_route' => 'generated::1h7IUJqlremrBKNu',
           ),
           1 => 
           array (
@@ -1369,7 +1333,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'histoire.show',
+            '_route' => 'histoire.index',
           ),
           1 => 
           array (
@@ -1386,7 +1350,52 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      421 => 
+      431 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'histoire.create',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      450 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'histoire.store',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      466 => 
       array (
         0 => 
         array (
@@ -1409,7 +1418,30 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      429 => 
+      477 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'histoire.tag.show',
+          ),
+          1 => 
+          array (
+            0 => 'histoire',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      486 => 
       array (
         0 => 
         array (
@@ -1419,19 +1451,21 @@ app('router')->setCompiledRoutes(
           ),
           1 => 
           array (
-            0 => 'histoire',
+            0 => 'id',
           ),
           2 => 
           array (
             'PUT' => 0,
-            'PATCH' => 1,
           ),
           3 => NULL,
           4 => false,
           5 => true,
           6 => NULL,
         ),
-        1 => 
+      ),
+      494 => 
+      array (
+        0 => 
         array (
           0 => 
           array (
@@ -1450,7 +1484,29 @@ app('router')->setCompiledRoutes(
           5 => true,
           6 => NULL,
         ),
-        2 => 
+      ),
+      515 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'histoire.tag.update',
+          ),
+          1 => 
+          array (
+            0 => 'histoire',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
         array (
           0 => NULL,
           1 => NULL,
@@ -1801,7 +1857,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::xJdqjNCAROzFAi9Z' => 
+    'generated::eOK9C5gPanZJZzPu' => 
     array (
       'methods' => 
       array (
@@ -1818,13 +1874,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:79:"function (\\Illuminate\\Http\\Request $request) {
     return $request->user();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000037e0000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000037b0000000000000000";}}',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::xJdqjNCAROzFAi9Z',
+        'as' => 'generated::eOK9C5gPanZJZzPu',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1840,7 +1896,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::y3LpPmfDtVYsm0EA' => 
+    'generated::vmXsoW1lbRm5mNGO' => 
     array (
       'methods' => 
       array (
@@ -1861,7 +1917,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::y3LpPmfDtVYsm0EA',
+        'as' => 'generated::vmXsoW1lbRm5mNGO',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1877,7 +1933,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Onx6FM0Ac8K5n5vh' => 
+    'generated::h8dX3oFxwGMxtACl' => 
     array (
       'methods' => 
       array (
@@ -1898,7 +1954,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Onx6FM0Ac8K5n5vh',
+        'as' => 'generated::h8dX3oFxwGMxtACl',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1914,7 +1970,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::pg97NA5RlMiq4K6M' => 
+    'generated::1h7IUJqlremrBKNu' => 
     array (
       'methods' => 
       array (
@@ -1934,7 +1990,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::pg97NA5RlMiq4K6M',
+        'as' => 'generated::1h7IUJqlremrBKNu',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1950,7 +2006,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ah9hywAbKzBEcWRQ' => 
+    'generated::WDUed6QPf2QNJYTn' => 
     array (
       'methods' => 
       array (
@@ -1971,7 +2027,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ah9hywAbKzBEcWRQ',
+        'as' => 'generated::WDUed6QPf2QNJYTn',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1987,7 +2043,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::weBGfgaxCvIrglF9' => 
+    'generated::ykybNQQyfp4Akebf' => 
     array (
       'methods' => 
       array (
@@ -2008,7 +2064,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::weBGfgaxCvIrglF9',
+        'as' => 'generated::ykybNQQyfp4Akebf',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2024,7 +2080,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::pd7Q6TNHh4UYIHsm' => 
+    'generated::yD3DhIImVr7VWUJZ' => 
     array (
       'methods' => 
       array (
@@ -2038,14 +2094,14 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'api',
         ),
-        'uses' => 'App\\Http\\Controllers\\APIController@eordrelease',
-        'controller' => 'App\\Http\\Controllers\\APIController@eordrelease',
+        'uses' => 'App\\Http\\Controllers\\APIController@',
+        'controller' => 'App\\Http\\Controllers\\APIController@',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::pd7Q6TNHh4UYIHsm',
+        'as' => 'generated::yD3DhIImVr7VWUJZ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2061,7 +2117,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::rJcYgZyrmTfix8s8' => 
+    'generated::eOVgucwjfbW56bKf' => 
     array (
       'methods' => 
       array (
@@ -2075,15 +2131,15 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:39:"function () {
-    return \\view(\'\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000003860000000000000000";}}',
+        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:65:"function () {
+    return \\redirect()->route(\'caverne.index\');
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000003830000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::rJcYgZyrmTfix8s8',
+        'as' => 'generated::eOVgucwjfbW56bKf',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2117,7 +2173,7 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:48:"function () {
     return \\view(\'dashboard\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000003880000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000003850000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -2289,7 +2345,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::vMkz9NxBgLBUejhw' => 
+    'generated::Fl8Hz47iZJH5HQWc' => 
     array (
       'methods' => 
       array (
@@ -2310,7 +2366,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::vMkz9NxBgLBUejhw',
+        'as' => 'generated::Fl8Hz47iZJH5HQWc',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2364,7 +2420,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::pXWOM8fNh2Epm93J' => 
+    'generated::n97xQrHHNwLeMr0S' => 
     array (
       'methods' => 
       array (
@@ -2385,7 +2441,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::pXWOM8fNh2Epm93J',
+        'as' => 'generated::n97xQrHHNwLeMr0S',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2705,7 +2761,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::VSbadjrUOG6bW08w' => 
+    'generated::lyuhuTSZAFb2Yq8D' => 
     array (
       'methods' => 
       array (
@@ -2726,7 +2782,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::VSbadjrUOG6bW08w',
+        'as' => 'generated::lyuhuTSZAFb2Yq8D',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3587,263 +3643,6 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'histoire.index' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'histoire',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'histoire.index',
-        'uses' => 'App\\Http\\Controllers\\HistoireController@index',
-        'controller' => 'App\\Http\\Controllers\\HistoireController@index',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'histoire.create' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'histoire/create',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'histoire.create',
-        'uses' => 'App\\Http\\Controllers\\HistoireController@create',
-        'controller' => 'App\\Http\\Controllers\\HistoireController@create',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'histoire.store' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'histoire',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'histoire.store',
-        'uses' => 'App\\Http\\Controllers\\HistoireController@store',
-        'controller' => 'App\\Http\\Controllers\\HistoireController@store',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'histoire.show' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'histoire/{histoire}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'histoire.show',
-        'uses' => 'App\\Http\\Controllers\\HistoireController@show',
-        'controller' => 'App\\Http\\Controllers\\HistoireController@show',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'histoire.edit' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'histoire/{histoire}/edit',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'histoire.edit',
-        'uses' => 'App\\Http\\Controllers\\HistoireController@edit',
-        'controller' => 'App\\Http\\Controllers\\HistoireController@edit',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'histoire.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'PUT',
-        1 => 'PATCH',
-      ),
-      'uri' => 'histoire/{histoire}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'histoire.update',
-        'uses' => 'App\\Http\\Controllers\\HistoireController@update',
-        'controller' => 'App\\Http\\Controllers\\HistoireController@update',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'histoire.destroy' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'DELETE',
-      ),
-      'uri' => 'histoire/{histoire}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'histoire.destroy',
-        'uses' => 'App\\Http\\Controllers\\HistoireController@destroy',
-        'controller' => 'App\\Http\\Controllers\\HistoireController@destroy',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
     'commentaire.index' => 
     array (
       'methods' => 
@@ -4086,6 +3885,335 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'histoire.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'histoire/{histoire}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\HistoireController@index',
+        'controller' => 'App\\Http\\Controllers\\HistoireController@index',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'histoire.index',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'histoire.create' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'histoire/create/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\HistoireController@create',
+        'controller' => 'App\\Http\\Controllers\\HistoireController@create',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'histoire.create',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'histoire.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'histoire/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\HistoireController@store',
+        'controller' => 'App\\Http\\Controllers\\HistoireController@store',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'histoire.store',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'histoire.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'histoire/{histoire}/edit',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\HistoireController@edit',
+        'controller' => 'App\\Http\\Controllers\\HistoireController@edit',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'histoire.edit',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'histoire.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+      ),
+      'uri' => 'histoire/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\HistoireController@update',
+        'controller' => 'App\\Http\\Controllers\\HistoireController@update',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'histoire.update',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'histoire.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'histoire/{histoire}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\HistoireController@destroy',
+        'controller' => 'App\\Http\\Controllers\\HistoireController@destroy',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'histoire.destroy',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'histoire.tag.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'histoire/{histoire}/tag',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\HistoireController@tag_show',
+        'controller' => 'App\\Http\\Controllers\\HistoireController@tag_show',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'histoire.tag.show',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'histoire.tag.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'histoire/tag/{histoire}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\HistoireController@tag_update',
+        'controller' => 'App\\Http\\Controllers\\HistoireController@tag_update',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'histoire.tag.update',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'livre_d_or' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'livre_d_or',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\CommentaireController@livredor',
+        'controller' => 'App\\Http\\Controllers\\CommentaireController@livredor',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'livre_d_or',
       ),
       'fallback' => false,
       'defaults' => 

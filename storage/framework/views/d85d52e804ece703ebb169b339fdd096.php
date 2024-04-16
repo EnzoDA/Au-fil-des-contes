@@ -24,34 +24,47 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <label for="image">Image</label>
-            <input type="file" id="image" name="image" class="form-control"/>
-            <?php $__errorArgs = ['image'];
+    <label for="image">Image</label>
+    <div class="input-group">
+        <div class="custom-file">
+            <input type="file" id="image" name="image" class="custom-file-input" onchange="updateFileName('image')">
+            <label class="custom-file-label" for="image" id="imageLabel">Choisir l'image</label>
+        </div>
+    </div>
+    <?php $__errorArgs = ['image'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                <div class="text-danger"><?php echo e($message); ?></div>
-            <?php unset($message);
+        <div class="text-danger"><?php echo e($message); ?></div>
+    <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-        </div>
+</div>
 
-        <div class="form-group">
-            <label for="audio">Audio</label>
-            <input type="file" id="audio" name="audio" class="form-control"/>
-            <?php $__errorArgs = ['audio'];
+<div class="form-group">
+    <label for="audio">Audio</label>
+    <div class="input-group">
+        <div class="custom-file">
+            <input type="file" id="audio" name="audio" class="custom-file-input" onchange="updateFileName('audio')">
+            <label class="custom-file-label" for="audio" id="audioLabel">Choisir l'audio</label>
+        </div>
+    </div>
+    <?php $__errorArgs = ['audio'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                <div class="text-danger"><?php echo e($message); ?></div>
-            <?php unset($message);
+        <div class="text-danger"><?php echo e($message); ?></div>
+    <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-        </div>
+</div>
+
+
+
 
 
         <button type="submit" class="btn btn-success">Ajouter cette Caverne</button>

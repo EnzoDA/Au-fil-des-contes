@@ -12,7 +12,7 @@ class Histoire extends Model
 {
     use HasFactory;
 
-    public function tags(): BelongsToMany
+    public function tags()
     {
         return $this->belongsToMany(Tag::class);
     }

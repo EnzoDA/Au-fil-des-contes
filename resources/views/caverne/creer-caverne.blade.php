@@ -42,12 +42,6 @@
     @enderror
 </div>
 
-<script>
-    function updateFileName(inputId) {
-        var fileName = document.getElementById(inputId).files[0].name;
-        document.getElementById(inputId + 'Label').innerHTML = fileName;
-    }
-</script>
 
 
 

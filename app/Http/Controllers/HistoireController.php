@@ -2,227 +2,241 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Histoire;
 use App\Models\Caverne;
+use App\Models\Histoire;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-use GuzzleHttp\Client;
-use Sabre\DAV\Client as DavClient;
-use Intervention\Image\Facades\Image;
 
 
 class HistoireController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        try {
-
-            $histoires = Histoire::all()->sortBy('titre');
-            return view('Histoire.histoire', compact('histoires'));
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Une erreur s\'est produite.');
-        }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-    }
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        try {
-
-            $histoire = Histoire::find($id);
-            $tags = Tag::all()->sortBy('tag_nom');
-            return view('histoire.histoire_edite', compact('histoire', 'tags'));
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Une erreur s\'est produite.');
-        }
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        try {
-            $request->validate([
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-            $numero = Histoire::latest('id')->first(); //je recupére l'id de la derniere categorie qui à été créer et la stock dans une variable $numero
-            $histoire = Histoire::find($id);
-            $histoire->titre = $request->titre; //recupére le titre
-
-            if ($request->hasFile('image')) //je vérifie si dans le request c'est bien un fichier
-            {
-                $image = $request->file('image'); //recupere ce qui à été enregistrer dans le requeste 'image' et la stock dans la variable $îmage
-                $imageName = $numero->id . '_.' . $image->getClientOriginalExtension(); //je créer un nom a mon image qui comporte la variable $numero qui a en paramètre id, je lui met pour chaque nom '_.' et récupere l'estension du fichier
-
-                $destinationPath = Storage::disk('public')->putFileAs('images', $image, $imageName); //je créer une variable qui stock le chemin d'acces au dossier 'images' dans public
-                Storage::disk('public')->delete('images/' . $histoire->image);
-
-
-                $resizeImage = Image::make(Storage::disk('public')->path($destinationPath))->resize(50, 50); //je créer une varaiable qui créer une instance de l'objet image dans le dossier 'images' avec sont nom, puis j'utilise la methode resize pour redimensionner l'image pour ensuite l'enregistrer dans la BDD
-                $thumbnail = Storage::disk('public')->putFileAs('images/thumbnail', $image, $imageName);
-                Storage::disk('public')->delete('images/thumbnail/' . $histoire->image);
-                $resizeImage->save(Storage::disk('public')->path($thumbnail)); //j'enregistre l'image dans le dossier
-
-                $histoire->image = $imageName;
-            }
-
-
-            if ($request->hasFile('intro')) {
-                $intro = $request->file('intro');
-                $introName = $numero->id . '_.' . $intro->getClientOriginalExtension();
-                $size = $request->file('intro')->getSize();
-                $destinationPath = Storage::disk('public')->putFileAs('audios/intro', $intro, $introName);
-                Storage::disk('public')->delete('audios/intro/' . $histoire->intro);
-                $histoire->intro = $introName;
-            }
-            if ($request->hasFile('audio')) {
-                $audio = $request->file('audio');
-                $audioName = $numero->id . '_.' . $audio->getClientOriginalExtension();
-                $size = $request->file('audio')->getSize();
-                $destinationPath = Storage::disk('public')->putFileAs('audios', $audio, $audioName);
-                Storage::disk('public')->delete('audios/' . $histoire->audio);
-                $histoire->audio = $audioName;
-            }
-            $histoire = Histoire::find($id);
-            $histoire->titre = $request->titre;
-            // Récupérer les ID des tags cochées et décochées
-            $checkedStoryIds = $request->input('tag_id', []);
-            $uncheckedStoryIds = $request->get('tag_id_to_remove', []);
-            // Détacher les histoires décochées du tag
-            $histoire->tags()->detach($uncheckedStoryIds);
-
-            // Attacher les histoires cochées au tag
-            $histoire->tags()->attach($checkedStoryIds);
-
-            $histoire->save();
-
-            return redirect()->route('histoire.index')->with('sucess', ' Vous avez créer une histoire');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Une erreur s\'est produite.');
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        try {
-            $histoire = Histoire::find($id);
-            $caverne = $histoire->caverne->id;
-
-            Storage::disk('public')->delete('images/' . $histoire->image);
-            Storage::disk('public')->delete('images/thumbnail/' . $histoire->image);
-            Storage::disk('public')->delete('audios/' . $histoire->audio);
-            Storage::disk('public')->delete('audios/intro/' . $histoire->intro);
-            $histoire->delete();
-
-            return redirect()->route('histoirecaverne', $caverne->id)->with('success', "l'histoire a été supprimé");
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Une erreur s\'est produite.');
-        }
-    }
-    public function hist_cav(string $id)
+    public function index($id)
     {
         try {
             $caverne = Caverne::find($id);
             $histoires = $caverne->histoires;
-            return view('caverne.histoire-caverne', compact('caverne', 'histoires'));
+            return view('caverne.histoire.histoire', compact('caverne', 'histoires'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite.');
         }
     }
 
-    public function create_histoire(string $id)
+    public function create($id)
     {
         try {
-            $tags = Tag::all()->sortBy('tag_nom');
-            $caverne = Caverne::find($id);
-            return view('Histoire.histoire_create', compact('caverne', 'tags'));
+            $tags = Tag::all();
+            return view('caverne.histoire.creer-histoire', compact('tags', 'id'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite.');
         }
     }
 
-    public function store_hist(Request $request, string $id)
+    public function store(Request $request, $id)
     {
-        try {
-            $caverne = Caverne::find($id);
-            $request->validate([
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      try{
+            // Validation des données entrées
+            $validator = Validator::make($request->all(), [
+                'titre' => 'required|min:2',
+                'image' => 'required|image|max:2048', // Taille maximale de 2 Mo
+                'audio' => 'required|mimes:mp3,wav|max:4096',
+                'intro' => 'required|mimes:mp3,wav|max:2048',
             ]);
-            $numero = Histoire::latest('id')->first(); //je recupére l'id de la derniere categorie qui à été créer et la stock dans une variable $numero
-            $histoire = new Histoire; // créer un enouvelle categorie
-            $histoire->titre = $request->titre; //recupére de libelle
-            if ($request->hasFile('image')) //je vérifie si dans le request c'est bien un fichier
-            {
-                $image = $request->file('image'); //recupere ce qui à été enregistrer dans le requeste 'image' et la stock dans la variable $îmage
-                $imageName = $numero->id . '_.' . $image->getClientOriginalExtension(); //je créer un nom a mon image qui comporte la variable $numero qui a en paramètre id, je lui met pour chaque nom '_.' et récupere l'estension du fichier
-
-                $destinationPath = Storage::disk('public')->putFileAs('images', $image, $imageName); //je créer une variable qui stock le chemin d'acces au dossier 'images' dans public
-
-
-                $resizeImage = Image::make(Storage::disk('public')->path($destinationPath))->resize(50, 50); //je créer une varaiable qui créer une instance de l'objet image dans le dossier 'images' avec sont nom, puis j'utilise la methode resize pour redimensionner l'image pour ensuite l'enregistrer dans la BDD
-                $thumbnail = Storage::disk('public')->putFileAs('images/thumbnail', $image, $imageName);
-                $resizeImage->save(Storage::disk('public')->path($thumbnail)); //j'enregistre l'image dans le dossier
-
-                $histoire->image = $imageName;
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
             }
-
-
+            // Traitement de l'image
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imagename = uniqid() . '_' . $image->getClientOriginalName();
+                $imagepath = storage_path('/app/public/images');
+                $image->move($imagepath, $imagename);
+            }
+            
+            // Traitement de l'intro
             if ($request->hasFile('intro')) {
                 $intro = $request->file('intro');
-                $introName = $numero->id . '_.' . $intro->getClientOriginalExtension();
-                $size = $request->file('intro')->getSize();
-                $destinationPath = Storage::disk('public')->putFileAs('audios/intro', $intro, $introName);
-                $histoire->intro = $introName;
+                $introname = uniqid() . '_' . $intro->getClientOriginalName();
+                $intropath = storage_path('/app/public/audios');
+                $intro->move($intropath, $introname);
             }
+            
+            // Traitement de l'audio
             if ($request->hasFile('audio')) {
                 $audio = $request->file('audio');
-                $audioName = $numero->id . '_.' . $audio->getClientOriginalExtension();
-                $size = $request->file('audio')->getSize();
-                $destinationPath = Storage::disk('public')->putFileAs('audios', $audio, $audioName);
-                $histoire->audio = $audioName;
+                $audioname = uniqid() . '_' . $audio->getClientOriginalName();
+                $audiopath = storage_path('/app/public/audios');
+                $audio->move($audiopath, $audioname);
             }
-            // Récupérer les ID des histoires cochées
-            $tag_id = $request->input('histoire_id', []);
 
-            // Associer l'histoire aux tags
-            $histoire->histoires()->attach($tag_id);
-
-            $histoire->caverne()->associate($caverne);
+            $histoire = new Histoire();
+            $histoire->titre = $request->titre;
+            $histoire->image = $imagename;
+            $histoire->audio = $audioname;
+            $histoire->intro = $introname;
+            $histoire->nb_vue = 0;
+            $histoire->note = 0;
+            $histoire->nb_notes = 0;
+            $histoire->caverne_id =$id;
             $histoire->save();
+            // Associer les tags sélectionnées si il y en a 
+            if ($request->has('tags')) {
+                $tags = $request->tags;
+                //dd($tags[1]);
+                foreach ($tags as $tag) {
+                    $histoire->tags()->attach($tag);
+                }
+            }
+            return redirect()->route('histoire.index', $id)->with('success', 'Histoire ajoutée avec succès');
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->with('error', 'Une erreur s\'est produite');
+        }
+    }
 
-            return redirect()->route('histoirecaverne', $caverne->id)->with('sucess', ' Vous avez créer une histoire');
+
+    public function destroy($id, Request $request)
+    {
+        try {
+            // Récupérer l'histoire à supprimer
+            $histoire = Histoire::findOrFail($request->iddestroy);
+            // Supprimer l'image associée s'il y en a une
+            Storage::disk('public')->delete('images/' . $histoire->image);
+            Storage::disk('public')->delete('audios/' . $histoire->audio);
+            Storage::disk('public')->delete('audios/' . $histoire->intro);
+            // Supprimer l'histoire de la base de données
+            $histoire->delete();
+            return redirect()->route('histoire.index', $id)->with('success', 'Histoire supprimée avec succès!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Une erreur s\'est produite.');
+        }
+
+    }
+
+    public function edit($id, Request $request)
+    {
+        try {
+            $histoire = Histoire::find($request->idupdate);
+            return view('caverne.histoire.modifier-histoire', compact('histoire', 'id'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite.');
         }
     }
+
+    public function update(Request $request, $id)
+    { 
+        try {
+            // Validation des données entrées
+            $validator = Validator::make($request->all(), [
+                'titre' => 'required|min:2',
+                'image' => 'image|max:2048', // Taille maximale de 2 Mo
+                'audio' => 'mimes:mp3,wav|max:4096',
+                'intro' => 'mimes:mp3,wav|max:2048',
+            ]);
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            }
+
+            // Récupérer la caverne à mettre à jour
+            $histoire = Histoire::findOrFail($request->idupdate);
+
+            // Traitement de l'image s'il y a un fichier envoyé
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imagename = $request->titre . uniqid() . '.' . $image->getClientOriginalExtension();
+                $imagepath = storage_path('/app/public/images');
+                $image->move($imagepath, $imagename);
+
+                // Supprimer l'ancienne image si elle existe
+                if ($histoire->image) {
+                    Storage::disk('public')->delete('images/' . $histoire->image);
+                }
+                $histoire->image = $imagename;
+            }
+
+            // Traitement de l'audio s'il y a un fichier envoyé
+            if ($request->hasFile('audio')) {
+                $audio = $request->file('audio');
+                $audioname = $request->titre . uniqid() . '.' . $audio->getClientOriginalExtension();
+                $audiopath = storage_path('/app/public/audios');
+                $audio->move($audiopath, $audioname);
+
+                // Supprimer l'ancien audio s'il existe
+                if ($histoire->audio) {
+                    Storage::disk('public')->delete('audios/' . $histoire->audio);
+                }
+
+                $histoire->audio = $audioname;
+            }
+            
+            //Traitement de l'intro si il y'en a une
+            if ($request->hasFile('intro')) {
+                $intro = $request->file('intro');
+                $introname = $request->titre . uniqid() . '.' . $intro->getClientOriginalExtension();
+                $intropath = storage_path('/app/public/intros');
+                $intro->move($intropath, $introname);
+
+                // Supprimer l'ancienne intro s'il existe
+                if ($histoire->intro) {
+                    Storage::disk('public')->delete('audios/' . $histoire->intro);
+                }
+
+                $histoire->intro = $introname;
+            }
+
+            // Mettre à jour les autres champs
+            if($request->titre != $histoire->titre)
+            {
+                $histoire->titre = $request->titre;
+            }
+            $histoire->save();
+            return redirect()->route('histoire.index', $id)->with('success', 'Histoire mise à jour avec succès.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Une erreur s\'est produite.');
+        }
+    }
+
+
+
+
+    // TAG CONTROLE
+
+
+    public function tag_show (Request $request, $id)
+    {
+        try{
+            $histoire = Histoire::findOrFail($request->idhistoire);
+            $tags = Tag::all()->keyBy('id')->diffKeys($histoire->tags()->get()->keyBy('id'));
+            return view('caverne.histoire.tag.tag', compact('tags', 'histoire', 'id'));
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->with('error', 'Une erreur s\'est produite.');
+        }
+    }
+
+    public function tag_update(Request $request, $id)
+    {
+       // dd(json_decode($request->tags));
+        //try{
+            $histoire = Histoire::findOrFail($request->idhistoire);
+            $histoire->tags()->detach();
+            $tagsArray = json_decode($request->tags);
+            foreach($tagsArray as $tag)
+            {
+                $histoire->tags()->attach($tag);
+            }
+            return redirect()->route('histoire.index', $id)->with('success', 'Tag(s) associé(s) à cet histoire mis à jour avec succès.');
+        // }
+        // catch(\Exception $e)
+        // {
+        //     return redirect()->back()->with('error', 'Une erreur s\'est produite.');
+        // }
+    }
+
+
 }

@@ -11,7 +11,7 @@ class Tag extends Model
 {
     use HasFactory;
 
-    public function histoires(): BelongsToMany
+    public function histoires()
     {
         return $this->belongsToMany(Histoire::class);
     }

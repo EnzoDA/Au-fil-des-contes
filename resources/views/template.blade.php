@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -79,7 +80,9 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                @auth
+                    <button onclick="goBack();" class="btn btn-primary ">Retour</button>
+                    @endauth
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -198,6 +201,54 @@
                 <script src="js/demo/chart-pie-demo.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/startbootstrap-sb-admin-2@4.1.4/js/sb-admin-2.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/startbootstrap-sb-admin-2@4.1.4/css/sb-admin-2.min.css"></script>
+                <script>
+        /* Méthode pour l'action retour */
+        function goBack() {
+            window.history.back();
+        }
+
+
+        /* Méthode de tri */
+        const compare = function(ids, asc) {
+            return function(row1, row2) {
+                const tdValue = function(row, ids) {
+                    return row.children[ids].textContent;
+                }
+                const tri = function(v1, v2) {
+                    if (v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2)) {
+                        return v1 - v2;
+                    } else {
+                        return v1.toString().localeCompare(v2);
+                    }
+                    return v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2);
+                };
+                return tri(tdValue(asc ? row1 : row2, ids), tdValue(asc ? row2 : row1, ids));
+            }
+        }
+
+        const tbody = document.querySelector('tbody');
+        const thx = document.querySelectorAll('th');
+        const trxb = tbody.querySelectorAll('tr');
+        thx.forEach(function(th) {
+            th.addEventListener('click', function() {
+                let classe = Array.from(trxb).sort(compare(Array.from(thx).indexOf(th), this.asc = !this.asc));
+                classe.forEach(function(tr) {
+                    tbody.appendChild(tr)
+                });
+            })
+        });
+
+    
+    function updateFileName(inputId) {
+        var fileName = document.getElementById(inputId).files[0].name;
+        document.getElementById(inputId + 'Label').innerHTML = fileName;
+    }
+
+
+    function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 
 </html>

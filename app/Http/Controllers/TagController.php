@@ -22,9 +22,7 @@ class TagController extends Controller
      */
     public function show(string $id)
     {
-        $tag = Tag::find($id);
-        $tags = $tag->histoires->sortBy('titre');
-        return view('tag.tag_show', compact('tags', 'tag'));
+        
     }
 
     /**
@@ -75,15 +73,6 @@ class TagController extends Controller
         $editTag->tag_nom = $request->get('tag_nom');
         $editTag->save();
 
-        // Récupérer les ID des histoires cochées et décochées
-        $checkedStoryIds = $request->input('histoire_id', []);
-        $uncheckedStoryIds = $request->get('histoire_id_to_remove', []);
-        // Détacher les histoires décochées du tag
-        $editTag->histoires()->detach($uncheckedStoryIds);
-
-        // Attacher les histoires cochées au tag
-        $editTag->histoires()->attach($checkedStoryIds);
-
         return redirect()->route('tags.index');
     }
 
@@ -95,12 +84,5 @@ class TagController extends Controller
         $tag = Tag::find($id);
         $tag->delete();
         return redirect()->route('tags.index');
-    }
-
-    public function search(Request $request)
-    {
-        $query = $request->input('search');
-        $resultats = Histoire::where('contenu', 'like', "%$query%")->get();
-        return view('resultats', ['resultats' => $resultats]);
     }
 }

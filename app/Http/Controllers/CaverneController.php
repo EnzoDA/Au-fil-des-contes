@@ -43,7 +43,7 @@ class CaverneController extends Controller
 
     public function store(Request $request)
     {
-        // try{
+        try{
         // Validation des données entrées
         $validator = Validator::make($request->all(), [
             'titre' => 'required|min:2',
@@ -56,7 +56,7 @@ class CaverneController extends Controller
         // Traitement de l'image
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imagename = uniqid() . '_' . $image->getClientOriginalName();
+            $imagename = $request->titre . uniqid() . '.' . $image->getClientOriginalExtension();
             $imagepath = storage_path('/app/public/images');
             $image->move($imagepath, $imagename);
         }
@@ -64,7 +64,7 @@ class CaverneController extends Controller
         // Traitement de l'audio
         if ($request->hasFile('audio')) {
             $audio = $request->file('audio');
-            $audioname = uniqid() . '_' . $audio->getClientOriginalName();
+            $audioname = $request->titre . uniqid() . '.' . $audio->getClientOriginalExtension();
             $audiopath = storage_path('/app/public/audios');
             $audio->move($audiopath, $audioname);
         }
@@ -76,11 +76,11 @@ class CaverneController extends Controller
         $caverne->audio = $audioname;
         $caverne->save();
 
-        return redirect()->route('caverne.index')->with('success', 'Caverne créée avec succès!');
-        // }
-        // catch (\Exception $e) {
-        //     return redirect()->back()->with('error', 'Une errer s\'est produite.');
-        // }
+        return redirect()->route('caverne.index')->with('success', 'Caverne crée avec succès!');
+        }
+        catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Une errer s\'est produite.');
+        }
     }
 
 
@@ -130,13 +130,13 @@ class CaverneController extends Controller
             // Traitement de l'image s'il y a un fichier envoyé
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
-                $imagename = uniqid() . '_' . $image->getClientOriginalExtension();
+                $imagename = $request->titre . uniqid() . '.' . $image->getClientOriginalExtension();
                 $imagepath = storage_path('/app/public/images');
                 $image->move($imagepath, $imagename);
 
                 // Supprimer l'ancienne image si elle existe
                 if ($caverne->image) {
-                    Storage::delete('/public/images/' . $caverne->image);
+                    Storage::disk('public')->delete('images/' . $caverne->image);
                 }
 
                 $caverne->image = $imagename;
@@ -145,13 +145,13 @@ class CaverneController extends Controller
             // Traitement de l'audio s'il y a un fichier envoyé
             if ($request->hasFile('audio')) {
                 $audio = $request->file('audio');
-                $audioname = uniqid() . '_' . $audio->getClientOriginalExtension();
+                $audioname = $request->titre . uniqid() . '.' . $audio->getClientOriginalExtension();
                 $audiopath = storage_path('/app/public/audios');
                 $audio->move($audiopath, $audioname);
 
                 // Supprimer l'ancien audio s'il existe
                 if ($caverne->audio) {
-                    Storage::delete('/public/audios/' . $caverne->audio);
+                    Storage::disk('public')->delete('audios/' . $caverne->audio);
                 }
 
                 $caverne->audio = $audioname;
@@ -171,18 +171,23 @@ class CaverneController extends Controller
      */
     public function destroy(string $id)
     {
-        try {
+        
+         try {
             // Récupérer la caverne à supprimer
             $caverne = Caverne::findOrFail($id);
-
             // Supprimer l'image associée s'il y en a une
             Storage::disk('public')->delete('images/' . $caverne->image);
             Storage::disk('public')->delete('audios/' . $caverne->audio);
-            // Supprimer la caverne de la base de données
+            $histoires = $caverne->histoires();
+            foreach($histoires as $histoire)
+            {
+                Storage::disk('public')->delete('images/' . $histoire->image);
+                Storage::disk('public')->delete('audios/' . $histoire->audio);
+                Storage::disk('public')->delete('audios/' . $histoire->intro);
+                // Supprimer l'histoire de la base de données
+                $histoire->delete();
+            }
             $caverne->delete();
-
-            
-
             return redirect()->route('caverne.index')->with('success', 'Caverne supprimée avec succès!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite.');

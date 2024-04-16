@@ -18,26 +18,30 @@
         </div>
 
         <div class="form-group">
-            <label for="image">Image</label>
-            <div class="custom-file">
-                <input type="file" id="image" name="image" class="custom-file-input">
-                <label class="custom-file-label" for="image">Choisir une nouvelle image</label>
-            </div>
-            @error('image')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
+    <label for="image">Image</label>
+    <div class="input-group">
+        <div class="custom-file">
+            <input type="file" id="image" name="image" class="custom-file-input" onchange="updateFileName('image')">
+            <label class="custom-file-label" for="image" id="imageLabel">Choisir une nouvelle image</label>
         </div>
+    </div>
+    @error('image')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
 
         <div class="form-group">
-            <label for="audio">Audio</label>
-            <div class="custom-file">
-                <input type="file" id="audio" name="audio" class="custom-file-input">
-                <label class="custom-file-label" for="audio">Choisir un nouvel audio</label>
-            </div>
-            @error('audio')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
+    <label for="audio">Audio</label>
+    <div class="input-group">
+        <div class="custom-file">
+            <input type="file" id="audio" name="audio" class="custom-file-input" onchange="updateFileName('audio')">
+            <label class="custom-file-label" for="audio" id="audioLabel">Choisir un nouvel audio</label>
         </div>
+    </div>
+    @error('audio')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
 
         <button type="submit" class="btn btn-primary">Modifier cette Caverne</button>
     </form>
