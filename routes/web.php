@@ -22,14 +22,18 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 Route::get('/', function () {
-    return redirect()->route('caverne.index');
+    return redirect()->route('caverne.edit');
 });
+
+
 
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,13 +43,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
-Route::resource('tags', TagController::class);
-
+Route::middleware('auth')->group(function () {
 Route::resources([
     'user' => UserController::class,
     'caverne' => CaverneController::class,
     'commentaire' => CommentaireController::class,
+    'tag' => TagController::class,
 
 ]);
 
@@ -62,8 +65,7 @@ Route::delete('histoire/{histoire}', [HistoireController::class, 'destroy'])->na
 
 Route::get('histoire/{histoire}/tag', [HistoireController::class, 'tag_show'])->name('histoire.tag.show');
 Route::post('histoire/tag/{histoire}', [HistoireController::class, 'tag_update'])->name('histoire.tag.update');
-
-
+});
 
 
 Route::get('livre_d_or', [CommentaireController::class, 'livredor'])->name('livre_d_or');

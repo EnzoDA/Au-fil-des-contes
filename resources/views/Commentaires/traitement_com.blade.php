@@ -1,8 +1,8 @@
 @extends('template')
 @section('content')
-
-<title>Création d histoires</title>
-
+<h2>
+  Gestion des commentaires
+</h2>
 <div class="table-responsive">
   <div class="container ">
     <div class="row row-cols-1 row-cols-md-3 ">
@@ -10,7 +10,7 @@
         <div class="col">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title"></h5>
+              <h5 class="card-title">{{ $commentaire->pseudo }}</h5>
               <p class="card-text">{{ $commentaire->commentaire }}</p>
               <div class="d-flex">
               <form  action="{{ route('commentaire.update', $commentaire->id) }}" method="POST">

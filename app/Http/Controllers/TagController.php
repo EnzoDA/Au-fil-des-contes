@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tag;
 use App\Models\Histoire;
+use Illuminate\Support\Facades\Validator;
 
 class TagController extends Controller
 {
@@ -13,8 +14,14 @@ class TagController extends Controller
      */
     public function index()
     {
+        try{
         $tags = Tag::all()->sortBy('tag_nom');
-        return view('tag.tag_all', compact('tags'));
+        return view('tag.tag', compact('tags'));
+        }
+        catch(\Exception $e)
+        {
+            redirect()->back()->with('error', 'Une erreur s\'est produite.' );
+        }
     }
 
     /**
@@ -22,7 +29,7 @@ class TagController extends Controller
      */
     public function show(string $id)
     {
-        
+
     }
 
     /**
@@ -30,8 +37,14 @@ class TagController extends Controller
      */
     public function create()
     {
+        try{
         $histoires = Histoire::all()->sortBy('titre');
-        return view('tag.tag_add', compact('histoires'));
+        return view('tag.creer-tag', compact('histoires'));
+        }
+        catch(\Exception $e)
+        {
+            redirect()->back()->with('error', 'Une erreur s\'est produite.' );
+        }
     }
 
     /**
@@ -39,18 +52,21 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $newTag = new Tag();
-
-        $newTag->tag_nom = $request->get('tag_nom');
-        $newTag->save();
-
-        // Récupérer les ID des histoires cochées
-        $histoireIds = $request->input('histoire_id', []);
-
-        // Associer les histoires au tag
-        $newTag->histoires()->attach($histoireIds);
-
-        return redirect()->route('tags.index');
+        try {
+            // Validation des données entrées
+            $validator = Validator::make($request->all(), [
+                'tag_nom' => 'required|min:2',
+            ]);
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            }
+            $newTag = new Tag();
+            $newTag->tag_nom = $request->tag_nom;
+            $newTag->save();
+            return redirect()->route('tag.index')->with('success', 'Mot-clé ajouté avec succès');
+        } catch (\Exception $e) {
+            redirect()->back()->with('error', 'Une erreur s\'est produite.');
+        }
     }
 
     /**
@@ -58,9 +74,15 @@ class TagController extends Controller
      */
     public function edit(int $id)
     {
+        try{
         $tag = Tag::find($id);
         $histoires = Histoire::all()->sortBy('titre');
-        return view('tag.tag_edit', compact('tag', 'histoires'));
+        return view('tag.modifier-tag', compact('tag', 'histoires'));
+        }
+        catch(\Exception $e)
+        {
+            redirect()->back()->with('error', 'Une erreur s\'est produite.' );
+        }
     }
 
     /**
@@ -68,12 +90,24 @@ class TagController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $editTag = Tag::find($id);
+        try {
+            $validator = Validator::make($request->all(), [
+                'tag_nom' => 'required|min:2',
+            ]);
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            }
 
-        $editTag->tag_nom = $request->get('tag_nom');
-        $editTag->save();
+            $editTag = Tag::find($id);
 
-        return redirect()->route('tags.index');
+            $editTag->tag_nom = $request->get('tag_nom');
+            $editTag->save();
+
+            return redirect()->route('tag.index')->with('success', 'Mot-clé modifié avec succès');
+
+        } catch (\Exception $e) {
+            redirect()->back()->with('error', 'Une erreur s\'est produite.');
+        }
     }
 
     /**
@@ -81,8 +115,14 @@ class TagController extends Controller
      */
     public function destroy(string $id)
     {
-        $tag = Tag::find($id);
-        $tag->delete();
-        return redirect()->route('tags.index');
+        try {
+
+            $tag = Tag::find($id);
+            $tag->delete();
+            return redirect()->route('tag.index')->with('success', 'Mot-clé supprimé avec succès');
+
+        } catch (\Exception $e) {
+            redirect()->back()->with('error', 'Une erreur s\'est produite.');
+        }
     }
 }
