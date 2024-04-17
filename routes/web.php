@@ -9,7 +9,7 @@ use App\Models\Histoire;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\HistoireController;
 use App\Http\Controllers\CommentaireController;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +25,10 @@ Route::get('/', function () {
     return redirect()->route('livre_d_or');
 });
 
+Route::get('/init-storage-link', function () {
+    Artisan::call('storage:link');
+    return 'Storage link created successfully.';
+});
 
 
 

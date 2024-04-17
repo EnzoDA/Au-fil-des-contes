@@ -42,7 +42,7 @@ class HistoireController extends Controller
             $validator = Validator::make($request->all(), [
                 'titre' => 'required|min:2',
                 'image' => 'required|image|max:2048', // Taille maximale de 2 Mo
-                'audio' => 'required|mimes:mp3,wav|max:4096',
+                'audio' => 'required|mimes:mp3,wav|max:8096',
                 'intro' => 'required|mimes:mp3,wav|max:2048',
             ]);
             if ($validator->fails()) {
@@ -133,7 +133,7 @@ class HistoireController extends Controller
             $validator = Validator::make($request->all(), [
                 'titre' => 'required|min:2',
                 'image' => 'image|max:2048', // Taille maximale de 2 Mo
-                'audio' => 'mimes:mp3,wav|max:4096',
+                'audio' => 'mimes:mp3,wav|max:8096',
                 'intro' => 'mimes:mp3,wav|max:2048',
             ]);
             if ($validator->fails()) {
@@ -176,7 +176,7 @@ class HistoireController extends Controller
             if ($request->hasFile('intro')) {
                 $intro = $request->file('intro');
                 $introname = $request->titre . uniqid() . '.' . $intro->getClientOriginalExtension();
-                $intropath = storage_path('/app/public/intros');
+                $intropath = storage_path('/app/public/audios');
                 $intro->move($intropath, $introname);
 
                 // Supprimer l'ancienne intro s'il existe

@@ -15,7 +15,7 @@
     <input class="form-control form-control-lg" type="text" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher" title="Rechercher">
 </div>
 <div class="table-responsive">
-    <table class="table table-bordered table-hover table-sm text-center" id=""> <!-- Ajout de la classe text-center pour centrer le contenu -->
+    <table class="table table-bordered table-hover table-sm text-center" id="myTable"> <!-- Ajout de la classe text-center pour centrer le contenu -->
         <thead>
             <tr>
                 <th>

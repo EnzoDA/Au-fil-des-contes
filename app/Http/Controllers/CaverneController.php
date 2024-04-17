@@ -48,7 +48,7 @@ class CaverneController extends Controller
         $validator = Validator::make($request->all(), [
             'titre' => 'required|min:2',
             'image' => 'required|image|max:2048', // Taille maximale de 2 Mo
-            'audio' => 'required|mimes:mp3,wav|max:20480',
+            'audio' => 'required|mimes:mp3,wav|max:8096',
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
@@ -118,7 +118,7 @@ class CaverneController extends Controller
             $validator = Validator::make($request->all(), [
                 'titre' => 'required|min:2',
                 'image' => 'image|max:2048', // Taille maximale de 2 Mo
-                'audio' => 'mimes:mp3,wav|max:20480',
+                'audio' => 'mimes:mp3,wav|max:8096',
             ]);
             if ($validator->fails()) {
                 return back()->withErrors($validator)->withInput();
