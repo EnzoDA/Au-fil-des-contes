@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Tag;
 use App\Models\Histoire;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent;
 
 class TagController extends Controller
 {
@@ -15,7 +16,7 @@ class TagController extends Controller
     public function index()
     {
         try{
-        $tags = Tag::all()->sortBy('tag_nom');
+        $tags = Tag::orderBy('tag_nom')->paginate(10);
         return view('tag.tag', compact('tags'));
         }
         catch(\Exception $e)

@@ -8,15 +8,22 @@
 </head>
 <body>
 
-<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="#">Au fil des contes</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto"> <!-- Alignement à droite -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('caverne.index') }}">Admin</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
+
 
 <!-- Présentation du Projet -->
 <div class="container mt-5">
@@ -32,7 +39,7 @@
             <a href="#" class="btn btn-primary">Télécharger l Application</a>
         </div>
         <div class="col-lg-6">
-            <img src="image-projet.jpg" alt="Image du Projet" class="img-fluid">
+            <img src="{{ asset('images/livredor.png')}}" alt="Image du Projet" class="img-fluid">
         </div>
     </div>
 </div>
@@ -48,7 +55,9 @@
 
             <div class="col-md-6">
                 <div class="card mb-4">
+                    
                     <div class="card-body">
+                        <h5 class="card-title">{{ $commentaire->pseudo }}</h5>
                         <p class="card-text"> {{ $commentaire->commentaire }}</p>
                     </div>
                 </div>

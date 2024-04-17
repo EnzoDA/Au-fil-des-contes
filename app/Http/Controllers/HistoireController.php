@@ -18,7 +18,7 @@ class HistoireController extends Controller
     {
         try {
             $caverne = Caverne::find($id);
-            $histoires = $caverne->histoires;
+            $histoires = $caverne->histoires()->paginate(5);
             return view('caverne.histoire.histoire', compact('caverne', 'histoires'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite.');
@@ -85,7 +85,6 @@ class HistoireController extends Controller
             // Associer les tags sélectionnées si il y en a 
             if ($request->has('tags')) {
                 $tags = $request->tags;
-                //dd($tags[1]);
                 foreach ($tags as $tag) {
                     $histoire->tags()->attach($tag);
                 }

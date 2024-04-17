@@ -9,8 +9,11 @@
     @csrf
     <button type="submit" class="btn btn-primary">Créer une Caverne</button>
 </form>
+<div class="form-inline md-3 mb-3">
+    <input class="form-control form-control-lg" type="text" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher" title="Rechercher">
+</div>
 <div class="table-responsive">
-    <table class="table table-bordered table-hover table-sm text-center"> <!-- Ajout de la classe text-center pour centrer le contenu -->
+    <table class="table table-bordered table-hover table-sm text-center" id="myTable"> <!-- Ajout de la classe text-center pour centrer le contenu -->
         <thead>
             <tr>
                 <th>Image</th>
@@ -59,6 +62,8 @@
         </tbody>
     </table>
 </div>
+{{ $cavernes->links('pagination::bootstrap-5') }}
+
 @stop
 
 

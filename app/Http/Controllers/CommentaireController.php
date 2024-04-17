@@ -88,7 +88,6 @@ class CommentaireController extends Controller
         try{
             $commentaires = Commentaire::where('visible' , 1)->get();
             return view('Commentaires.livre_d_or', compact('commentaires'));
-
         } catch (\Exception $e) {
         return redirect()->back()->with('error', 'Une erreur s\'est produite.');
         }

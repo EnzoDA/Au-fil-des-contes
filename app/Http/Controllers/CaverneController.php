@@ -18,7 +18,7 @@ class CaverneController extends Controller
     public function index()
     {
         try {
-            $cavernes = Caverne::all();
+            $cavernes = Caverne::orderBy('titre')->paginate(5);
             return view('caverne.caverne', compact('cavernes'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur s\'est produite.');

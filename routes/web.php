@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 Route::get('/', function () {
-    return redirect()->route('caverne.edit');
+    return redirect()->route('livre_d_or');
 });
 
 
