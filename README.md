@@ -1,2 +1,3 @@
 # ConteCrafter
-Les enfants hospitalisés sont souvent anxieux, ne parviennent pas à se détendre, et à penser à autre chose. L’équipe ConteCrafter s’est donc fixée comme objectif de répondre à ce besoin en mettant à disposition des histoires en ligne sur un site web. Ces histoires seront racontées, puis enregistré et enfin mise en ligne par une ATSEM. Ces histoires seront ensuite audibles par les enfants hospitalisés.
+Les enfants hospitalisés sont souvent anxieux, ne parviennent pas à se détendre, et à penser à autre chose. L’équipe ConteCrafter s’est donc fixée comme objectif de répondre à ce besoin en mettant à disposition des histoires en ligne sur un site web. Ces histoires 
+seront racontées, puis enregistré et enfin mise en ligne par une ATSEM. Ces histoires seront ensuite audibles par les enfants hospitalisés.
